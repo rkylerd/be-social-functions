@@ -1,0 +1,23 @@
+{
+  "name": "be-social-functions",
+  "version": "1.0.0",
+  "description": "Lambda API functions for be-social front-end",
+  "main": "index.js",
+  "dependencies": {
+    "jsonwebtoken": "^8.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rkylerd/be-social-functions.git"
+  },
+  "author": "Kyler Rosquist",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rkylerd/be-social-functions/issues"
+  },
+  "homepage": "https://github.com/rkylerd/be-social-functions#readme"
+}
