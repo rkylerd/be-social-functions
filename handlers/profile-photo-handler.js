@@ -1,4 +1,4 @@
-const { uploaProfilePhoto } = require("./services/profilePhotoService")
+const { uploadProfilePhoto } = require("./services/profilePhotoService")
 
 exports.handler = async (request, event) => {
     // let response = {
@@ -10,15 +10,15 @@ exports.handler = async (request, event) => {
     //     return response;
     // }
     
-    const responseString = "Successfully updated your profile photo";
-    const { handle = "", imageType = "", profilPhotoBinary = "" } = request || {};
+    const { handle = "", type = "", binary } = request || {};
+    const buffer = Buffer.from(binary.replace(/^data:image\/\w+;base64,/, ""),'base64');
     
     try {
-        await uploaProfilePhoto({ handle, imageType, binary: profilPhotoBinary });
-        // Then you eed to upload the photo to the user table
+        const response = await uploadProfilePhoto({ handle: `@${handle}`, type, file: buffer });
+ 
         return {
             statusCode: 200,
-            message: responseString
+            response
         }
     } catch(err) {
         return {
@@ -27,5 +27,3 @@ exports.handler = async (request, event) => {
         }
     }
 };
-    
-    

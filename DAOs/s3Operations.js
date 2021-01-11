@@ -13,7 +13,7 @@ const putObject = (params) => {
     });
 }
 
-const getObject = () =>
+const getObject = (params) =>
     new Promise((resolve, reject) => {     
         s3.getObject(params, function(err, data) {
             if (err) reject(err);

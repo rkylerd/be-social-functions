@@ -3,16 +3,16 @@ const globalParams = {
     Bucket: "tweeter-profile-photos"
 };
 
-// const params = {
-//     ACL: 'public-read'
-// };
-const uploadPhotoAsBinary = ({handle = "", imageType = "", binary = ""}) => {
+const uploadPhotoAsBinary = ({handle = "", type = "", file }) => {
+    if (!file) throw new Error("File was empty");
+    
     const params = {
-        ...globalParams,
-        Body: binary, 
-        Key: handle, 
-        ContentType: `image/${imageType}`,
-        CacheControl: "max-age=0"
+        Bucket: "tweeter-profile-photos",
+        Body: file,
+        Key: handle,
+        ContentEncoding: 'base64',
+        ContentType: type
+        // CacheControl: "max-age=0"
     };
     
     return putObject(params);
